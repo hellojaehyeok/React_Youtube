@@ -5,16 +5,20 @@
     box-sizing: border-box;
 }
 body{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+
 }
 
 div#root, div.App{
-    width: 100%;
+
+}
+
+div.mainPage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 

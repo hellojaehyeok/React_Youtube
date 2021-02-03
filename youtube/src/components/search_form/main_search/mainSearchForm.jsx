@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import styles from './searchForm.module.css'
-import youtubeLogo from '../../youtube_logo.png';
+import styles from './mainSearchForm.module.css'
+import youtubeLogo from '../../../youtube_logo.png';
 import '@fortawesome/fontawesome-free/js/all.js';
 
-const SearchForm = (props) => {
+const MainSearchForm = (props) => {
             
     const [searchValue, setSearchValue] = useState("");
+
 
     const onSubmit = e =>{
         e.preventDefault();
@@ -13,6 +14,10 @@ const SearchForm = (props) => {
         .then(response => response.text())
         // .then(result => console.log(result))
         .catch(error => console.log('error', error));
+
+
+        console.log(searchValue);
+        // document.location.href='/searchPage';
     }
 
 
@@ -33,4 +38,4 @@ const SearchForm = (props) => {
     );
 };
 
-export default SearchForm;
+export default MainSearchForm;
