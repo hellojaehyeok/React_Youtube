@@ -1,0 +1,14 @@
+
+div.listWrap{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+ul.listContainer{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

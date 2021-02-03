@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './app.css';
 import SearchForm from './components/search_form/searchForm'
-import MostVideoList from './components/most_videos/most_video_list'
+import MostVideoList from './components/most_videos/most_video_list/most_video_list'
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
       <MostVideoList videos={videos}/>
     </div>
   );
+  
 }
 
 export default App;

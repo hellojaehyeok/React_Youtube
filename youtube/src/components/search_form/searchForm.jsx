@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './searchForm.module.css'
 import youtubeLogo from '../../youtube_logo.png';
 import '@fortawesome/fontawesome-free/js/all.js';
 
@@ -16,17 +17,17 @@ const SearchForm = (props) => {
 
 
     return(
-        <section className="search-wrap">
-            <div className="logo"><img src={youtubeLogo} alt="유튜브 로고" className="logo-img"/></div>
-            <form action="#" onSubmit={onSubmit} className="search-form">
+        <section className={styles.wrap}>
+            <div className={styles.logo}><img src={youtubeLogo} alt="유튜브 로고" className={styles.logoImg}/></div>
+            <form action="#" onSubmit={onSubmit} className={styles.searchForm}>
                 <input
                 type="text"
                 placeholder="검색어를 입력해주세요"
-                className="search-text"
+                className={styles.searchText}
                 value = {searchValue}
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
-                <button type="submit" className="search-button"><i className="fas fa-search search-icon"></i></button>
+                <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
             </form>
         </section>
     );

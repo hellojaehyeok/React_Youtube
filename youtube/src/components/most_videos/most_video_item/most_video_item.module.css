@@ -1,0 +1,24 @@
+
+
+
+li.videoList{
+    list-style: none;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 20%;
+    float: left;
+}
+li.videoList > img.thumbnail{
+    width: 100%;
+    border-radius: 10px;
+}
+li.videoList > h2.title{
+    font-size: 1em;
+    width: 100%;
+    color: #000;
+    margin: 10px 0 5px;
+}
+li.videoList > span.channelTitle{
+    font-size: 0.9em;
+    color: #808080;
+}

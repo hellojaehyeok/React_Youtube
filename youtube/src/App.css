@@ -2,6 +2,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 body{
     width: 100vw;
@@ -9,46 +10,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-/* Header */
-section{
-    display: flex;
-}
-
-div.logo{
-    width: 200px;
-    height: 45px;
-    margin-right: 40px;
-}
-img.logo-img{
+div#root, div.App{
     width: 100%;
-    height: 100%;
 }
 
-form.search-form{
-    display: flex;
-    /* border: 1px solid #454545; */
-    border-radius: 10px;
-}
-input.search-text{
-    outline: none;
-    padding-left: 15px;
-    background-color: transparent;
-    border: 0;
-    border-bottom: 1px solid #454545;
-}
-button.search-button{
-    width: 50px;
-    background: transparent;
-    border: 0;
-}
-.search-icon{
-    font-size: 20px;
-    color: #454545;
-    opacity: 0.5;
-    transition: 500ms;
-}
-button.search-button:hover .search-icon{
-    opacity: 1;
-}
+
