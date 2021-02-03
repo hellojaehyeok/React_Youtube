@@ -16,6 +16,7 @@ function App() {
 
   const [videos, setVideos] = useState([]);
   const [word, setWord] = useState("");
+  const [searchVideos, setSearchVideos] = useState([]);
 
   const requestOptions = {
     method: 'GET',
@@ -37,7 +38,7 @@ function App() {
     if(word == "")return;
     fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg", requestOptions)
     .then(response => response.json())
-    .then(result => console.log(result))
+    .then(result => setSearchVideos(result.items))
     .catch(error => console.log('error', error));
   },[word])
 
@@ -46,12 +47,11 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-
           {/* Search */}
           <Route path="/searchPage">
             <div className="searchPage">
               <SubSearchForm searchWord={word}/>
-              <SearchVideoList />
+              <SearchVideoList videos={searchVideos} />
             </div>
           </Route>
 

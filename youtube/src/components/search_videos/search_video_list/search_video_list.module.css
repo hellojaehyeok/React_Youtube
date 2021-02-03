@@ -1,0 +1,10 @@
+
+
+ul.listWrap{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 150px;
+    border: 1px solid salmon;
+}

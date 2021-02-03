@@ -1,0 +1,24 @@
+
+
+li.videoList{
+    list-style: none;
+    width: 20%;
+    padding: 10px 10px;
+}
+li.videoList > img{
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+li.videoList > h2{
+    font-size: 1em;
+    width: 100%;
+    color: #000;
+    margin: 10px 0 5px;
+    cursor: pointer;
+}
+li.videoList > span{
+    font-size: 0.9em;
+    color: #808080;
+    cursor: pointer;
+}
