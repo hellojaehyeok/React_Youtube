@@ -10,27 +10,36 @@ import {
   Link,
   NavLink
 } from 'react-router-dom'
+import SearchVideoList from './components/search_videos/search_video_list/search_video_list';
 
 function App() {
 
   const [videos, setVideos] = useState([]);
+  const [word, setWord] = useState("");
 
+  const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  const searchWord = word =>{
+    setWord(word);
+  }
 
   useEffect(() =>{
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
     fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg", requestOptions)
       .then(response => response.json())
       .then(result => setVideos(result.items))
       .catch(error => console.log('error', error));
   }, [])
 
-
-  useEffect(() =>{
-  }, [])
+  useEffect(()=>{
+    if(word == "")return;
+    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg", requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  },[word])
 
   
   return (
@@ -41,14 +50,15 @@ function App() {
           {/* Search */}
           <Route path="/searchPage">
             <div className="searchPage">
-              <SubSearchForm />
+              <SubSearchForm searchWord={word}/>
+              <SearchVideoList />
             </div>
           </Route>
 
           {/* Main */}
           <Route path="/">
             <div className="mainPage">
-              <MainSearchForm/>
+              <MainSearchForm searchWord={searchWord}/>
               <MostVideoList videos={videos}/>
             </div>
           </Route>

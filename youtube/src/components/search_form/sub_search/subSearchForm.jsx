@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import youtubeLogo from '../../../youtube_logo.png';
 import styles from './subSearchForm.module.css'
 
@@ -9,12 +9,11 @@ const SubSearchForm = (props) => {
 
     const onSubmit = e =>{
         e.preventDefault();
-        fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+searchValue+"&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg")
-        .then(response => response.text())
-        // .then(result => console.log(result))
-        .catch(error => console.log('error', error));
     }
 
+    useEffect(()=>{
+        setSearchValue(props.searchWord);
+    },[])
 
     return(
         <header className={styles.header}>

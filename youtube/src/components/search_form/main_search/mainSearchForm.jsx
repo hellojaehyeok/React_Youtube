@@ -1,7 +1,14 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styles from './mainSearchForm.module.css'
 import youtubeLogo from '../../../youtube_logo.png';
 import '@fortawesome/fontawesome-free/js/all.js';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    NavLink
+  } from 'react-router-dom'
 
 const MainSearchForm = (props) => {
             
@@ -10,14 +17,9 @@ const MainSearchForm = (props) => {
 
     const onSubmit = e =>{
         e.preventDefault();
-        fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+searchValue+"&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg")
-        .then(response => response.text())
-        // .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        props.searchWord(searchValue);
 
-
-        console.log(searchValue);
-        // document.location.href='/searchPage';
+        document.querySelector('#searchLink').click();
     }
 
 
@@ -33,6 +35,7 @@ const MainSearchForm = (props) => {
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
                 <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
+                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">qweeeeeeee</NavLink>
             </form>
         </section>
     );
