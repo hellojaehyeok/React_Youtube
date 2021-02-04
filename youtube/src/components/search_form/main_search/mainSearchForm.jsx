@@ -17,7 +17,6 @@ const MainSearchForm = (props) => {
     const onSubmit = e =>{
         e.preventDefault();
         props.searchWord(searchValue);
-
         document.querySelector('#searchLink').click();
     }
 
@@ -34,7 +33,7 @@ const MainSearchForm = (props) => {
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
                 <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
-                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">qw</NavLink>
+                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">Link</NavLink>
             </form>
         </section>
     );
