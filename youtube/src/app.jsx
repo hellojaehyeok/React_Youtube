@@ -26,7 +26,7 @@ function App() {
   }
 
   useEffect(() =>{
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg", requestOptions)
+    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=구글코드", requestOptions)
       .then(response => response.json())
       .then(result => setVideos(result.items))
       .catch(error => console.log('error', error));
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(()=>{
     if(word == "")return;
-    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&type=video&key=AIzaSyBOQKEpgnOUbKtgg6s95_ScGzOKxCoO7Fg", requestOptions)
+    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&type=video&key=구글코드", requestOptions)
     .then(response => response.json())
     .then(result => setSearchVideos(result.items))
     .catch(error => console.log('error', error));
@@ -49,7 +49,7 @@ function App() {
           <Route path="/searchPage">
             <div className="searchPage">
               <SubSearchForm searchWord={word} newSearchWord={searchWord} />
-              <SearchVideoList videos={searchVideos} />
+              {/* <SearchVideoList videos={searchVideos} /> */}
             </div>
           </Route>
 
