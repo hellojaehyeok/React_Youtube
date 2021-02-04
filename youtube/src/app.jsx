@@ -49,7 +49,7 @@ function App() {
           <Route path="/searchPage">
             <div className="searchPage">
               <SubSearchForm searchWord={word} newSearchWord={searchWord} />
-              {/* <SearchVideoList videos={searchVideos} /> */}
+              <SearchVideoList videos={searchVideos} />
             </div>
           </Route>
 
@@ -57,7 +57,7 @@ function App() {
           <Route path="/">
             <div className="mainPage">
               <MainSearchForm searchWord={searchWord}/>
-              {/* <MostVideoList videos={videos}/> */}
+              <MostVideoList videos={videos}/>
             </div>
           </Route>
 
