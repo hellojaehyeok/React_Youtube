@@ -25,6 +25,13 @@ PostCSS를 사용한 이유는 크로스 브라우징이 용이하고
 메인 페이지와 검색 결과 페이지 두 개를 제작하였습니다.          
 React Router를 사용하여 페이지 간 이동을 하였습니다.        
 
+메인페이지     
+
+<img src="./readmeImg/main.jpg" width="100%">
+
+검색페이지      
+
+<img src="./readmeImg/search.jpg" width="100%">
 
 <hr />
 
