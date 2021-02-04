@@ -6,7 +6,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     NavLink
   } from 'react-router-dom'
 
@@ -35,7 +34,7 @@ const MainSearchForm = (props) => {
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
                 <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
-                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">qweeeeeeee</NavLink>
+                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">qw</NavLink>
             </form>
         </section>
     );

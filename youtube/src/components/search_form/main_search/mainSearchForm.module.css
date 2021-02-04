@@ -40,7 +40,7 @@ form > button.searchButton{
 form > button.searchButton:hover{
     opacity: 1;
 }
-.searchLink{
+a.searchLink{
     opacity: 0;
     display: none;
     font-size: 0;

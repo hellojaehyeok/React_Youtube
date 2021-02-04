@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import youtubeLogo from '../../../youtube_logo.png';
 import styles from './subSearchForm.module.css'
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    NavLink
+  } from 'react-router-dom'
 
 const SubSearchForm = (props) => {
     
@@ -9,15 +14,17 @@ const SubSearchForm = (props) => {
 
     const onSubmit = e =>{
         e.preventDefault();
+        props.newSearchWord(searchValue);
     }
 
     useEffect(()=>{
         setSearchValue(props.searchWord);
+
     },[])
 
     return(
         <header className={styles.header}>
-            <div className={styles.logo}><img src={youtubeLogo} alt="유튜브 로고" className={styles.logoImg}/></div>
+            <NavLink to='/' className={styles.logo}><img src={youtubeLogo} alt="유튜브 로고" className={styles.logoImg}/></NavLink>
             <form action="#" onSubmit={onSubmit} className={styles.searchForm}>
                 <input
                 type="text"
