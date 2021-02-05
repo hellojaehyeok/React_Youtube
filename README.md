@@ -1,6 +1,5 @@
 # React_Youtube
-YouTube Data API v3를 활용하여 개인 유튜브 웹사이트를 제작하였습니다.        
-현재 할당량 초과로 제작을 잠시 멈추었습니다.        
+YouTube Data API v3를 활용하여 개인 유튜브 웹사이트를 제작하였습니다.           
  
 
 <hr />
@@ -19,6 +18,58 @@ PostCSS를 사용한 이유는 크로스 브라우징이 용이하고
 그 후 className="" 을 사용하는 것 대신 className={style.클래스 이름} 을 사용합니다.          
 
 <hr />
+
+
+### 네트워크 통신 코드
+
+네트워크 통신에 사용하는 코드들을 분리하여 새로운 class로 만들었습니다.          
+먼저 constructor로 키값을 받아오고 중복돼서 사용되는 getRequestOptions를 만들었습니다.         
+
+youtube.js
+
+    constructor(key){
+        this.key=key;
+        this.getRequestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+    }
+
+두 가지 api가 사용되기 때문에 두 개의 함수를 제작 후 리턴해주었습니다.        
+url 주소에서 받아온 데이터를 json 파일로 변환하고 items들을 리턴해주었습니다.        
+(검색하였을 때 id 값이 두 개가 있는 것을 확인하였고 하나만 사용하기 위하여 map을 사용하였습니다.)         
+Postman을 이용하여 api들을 관리하고 저장하였습니다.        
+
+youtube.js
+
+    async mostPopular(){
+        const response = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=" + this.key, this.getRequestOptions);
+        const result = await response.json();
+        return result.items;
+    }
+
+    async search(query){
+        const response = await fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" + query + "&type=video&key=" + this.key, this.getRequestOptions);
+        const result = await response.json();
+        return result.items.map(item => ({ ...item, id: item.id.videoId }));
+    }
+
+
+그 후 index.js에서 youtube.js 파일을 가져와 사용하였습니다.        
+
+index.js 
+    
+    const youtube = new Youtube(process.env.REACT_APP_YOUYUBE_API);
+
+
+제 키를 깃허브에 노출시키면 많은 사람들이 보기에 .env 파일을 만들고 따로 저장 후        
+.gitignore을 통하여 업로드를 막았습니다.       
+
+.gitignore
+
+    #API Keys
+    .env
+
 
 
 ## 웹사이트 구성
@@ -84,21 +135,17 @@ mainSearchForm.jsx
 
 
 ### Main Page - Video List
-useEffect를 사용하여 창이 로드가 되면 json 파일을 가져오도록 하였습니다.      
-https://youtube.googleapis.com/youtube/v3/search? ~~~ 에서 원하는 데이터를 가져온 후      
-.then(response => response.json()) 으로 파일을 변환시켰습니다.     
-.then(result => setVideos(result.items)) 에서 json 파일 안에 있는 원하는 부분을 가져와 setVideos에 넣었습니다.      
-도중에 오류가 생길 경우에는 catch를 사용하여 컨트롤을 하였습니다.     
-이렇게 받아온 데이터를 props로 부모 요소에서 자식 요소한테 전달하였습니다.       
+useEffect를 사용하여 창이 로드가 되면 props로 받아온 youtube를 사용하여 
+배열을 새로 받아온 후 setMostVideos에 넣었습니다.
+이렇게 받아온 데이터를 props로 MostVideoList 한테 전달하였습니다.       
 
 
 app.jsx
 
     useEffect(() =>{
-        fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=구글코드", requestOptions)
-        .then(response => response.json())
-        .then(result => setVideos(result.items))
-        .catch(error => console.log('error', error));
+        youtube
+        .mostPopular()
+        .then(videos => setMostVideos(videos));
     }, [])
     .
     .
@@ -106,7 +153,7 @@ app.jsx
     <Route path="/">
         <div className="mainPage">
             <MainSearchForm searchWord={searchWord}/>
-            <MostVideoList videos={videos}/>
+            <MostVideoList videos={mostVideos}/>
         </div>
     </Route>
 
@@ -147,8 +194,8 @@ most_video_item.jsx
 헤더에는 유튜브 로고와 검색창을 배치하였습니다.       
 로고를 클릭 시 React Router를 활용하여 메인 페이지로 이동하게 하였습니다.        
 
-메인 페이지에서 데이터를 받은 app.jsx에서는 해당 단어는 SubSearchForm으로 전달하고,        
-데이터를 활용하여 받아온 파일은 json으로 변환한 후 SearchVideoList로 전달하였습니다.       
+메인 페이지에서 검색 데이터를 받은 app.jsx에서는 해당 단어는 SubSearchForm으로 전달하고,        
+그 단어를 youtube class에 넣어 setSearchVideos 를 업데이트 시켰습니다.
 
 app.jsx
 
@@ -158,10 +205,9 @@ app.jsx
 
     useEffect(()=>{
         if(word == "")return;
-        fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&type=video&key=구글코드", requestOptions)
-        .then(response => response.json())
-        .then(result => setSearchVideos(result.items))
-        .catch(error => console.log('error', error));
+        youtube
+        .search(word)
+        .then(videos => setSearchVideos(videos));
     },[word])
     .
     .
