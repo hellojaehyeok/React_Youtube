@@ -5,19 +5,37 @@ li.videoList{
     width: 20%;
     padding: 10px 10px;
 }
+
+li.videoList.onPlay{
+    width: 100%;
+    display: flex;
+}
+
+li.videoList.onPlay > img{
+    width: 50%;
+}
+
+li.videoList.onPlay > div{
+    margin-left: 10px;
+}
+
+li.videoList.offPlay{
+}
+
+
 li.videoList > img{
     width: 100%;
     border-radius: 10px;
     cursor: pointer;
 }
-li.videoList > h2{
+li.videoList > div > h2{
     font-size: 1em;
     width: 100%;
     color: #000;
     margin: 10px 0 5px;
     cursor: pointer;
 }
-li.videoList > span{
+li.videoList > div > span{
     font-size: 0.9em;
     color: #808080;
     cursor: pointer;

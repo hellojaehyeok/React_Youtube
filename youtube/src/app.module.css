@@ -4,13 +4,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
 
+/* SearchPage */
+div.content{
+    position: relative;
+    top: 125px;
+    display: flex;
+}
+div.playVideo{
+    flex: 1 1 70%;
+}
+div.list{
+    flex:  1 1 30%;
 }
 
-div#root, div.App{
 
-}
+
 
 div.mainPage{
     width: 100vw;
