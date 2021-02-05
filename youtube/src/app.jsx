@@ -10,34 +10,27 @@ import {
 } from 'react-router-dom'
 import SearchVideoList from './components/search_videos/search_video_list/search_video_list';
 
-function App() {
+function App({youtube}) {
 
-  const [videos, setVideos] = useState([]);
+  const [mostVideos, setMostVideos] = useState([]);
   const [word, setWord] = useState("");
   const [searchVideos, setSearchVideos] = useState([]);
-
-  const requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
 
   const searchWord = word =>{
     setWord(word);
   }
 
   useEffect(() =>{
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=구글코드", requestOptions)
-      .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log('error', error));
+    youtube
+    .mostPopular()
+    .then(videos => setMostVideos(videos));
   }, [])
 
   useEffect(()=>{
     if(word == "")return;
-    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+ word +"&type=video&key=구글코드", requestOptions)
-    .then(response => response.json())
-    .then(result => setSearchVideos(result.items))
-    .catch(error => console.log('error', error));
+    youtube
+    .search(word)
+    .then(videos => setSearchVideos(videos));
   },[word])
 
   
@@ -57,7 +50,7 @@ function App() {
           <Route path="/">
             <div className="mainPage">
               <MainSearchForm searchWord={searchWord}/>
-              <MostVideoList videos={videos}/>
+              <MostVideoList videos={mostVideos}/>
             </div>
           </Route>
 
