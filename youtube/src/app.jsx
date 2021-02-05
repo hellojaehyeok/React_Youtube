@@ -16,15 +16,19 @@ function App({youtube}) {
   const [mostVideos, setMostVideos] = useState([]);
   const [word, setWord] = useState("");
   const [searchVideos, setSearchVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videoDetails, setVideoDetails] = useState([])
 
   const searchWord = word =>{
     setWord(word);
   }
 
   const selectVideo = video =>{
-    console.log(video);
     setSelectedVideo(video);
+    youtube
+    .videoDetails(video.id) // 배열 벗기기
+    // .then(details => key(details))
+    .then(details => setVideoDetails(details[0]))
   }
 
   useEffect(() =>{
@@ -55,7 +59,7 @@ function App({youtube}) {
 
               <div className={styles.content}>
                 {selectedVideo &&<div className={styles.playVideo}>
-                   <PlayVideo selectedVideo={selectedVideo} />
+                   <PlayVideo selectedVideo={selectedVideo} videoDetails={videoDetails}/>
                 </div>}
                 
                 <div className={styles.list}>

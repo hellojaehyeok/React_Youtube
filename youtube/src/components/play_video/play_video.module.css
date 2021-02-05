@@ -5,20 +5,44 @@ section.playVideoWrap{
     padding: 20px;
 }
 
-.video{
-
+div.detailNumber{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #656d78;
+    font-size: 20px;
 }
 
-.title{
+ul.countWrap{
+    display: flex;
+}
+
+ul.countWrap > li{
+    list-style: none;
+    margin: 0 15px;
+    font-size: 20px;
+}
+
+ul.countWrap > li.good{
+    color: #ed5565;
+}
+
+ul.countWrap > li.bad{
+    color: #a0d468;
+}
+
+
+h1.title{
     font: 20px;
     margin-top: 40px;
 }
 
-.channelTitle{
+h2.channelTitle{
     font-size:16px;
     margin: 20px 0 ;
 }
 
-.description{
+pre.description{
     white-space: pre-wrap;
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './play_video.module.css'
+import '@fortawesome/fontawesome-free/js/all.js';
 
-const PlayVideo = ({selectedVideo, selectedVideo : {snippet}}) =>{
+const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails}) =>{
 
-    console.log(selectedVideo);
+    console.log(videoDetails);
 
     return(
         <section className={styles.playVideoWrap}>
@@ -16,6 +17,13 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}}) =>{
                 frameBorder="0"
                 allowFullScreen
             ></iframe>
+            <div className={styles.detailNumber}>
+                <span className={styles.views}>조회수 . {videoDetails.statistics.viewCount}</span>
+                <ul className={styles.countWrap}>
+                    <li className={styles.good}><i class="far fa-smile"></i> {videoDetails.statistics.likeCount}</li>
+                    <li className={styles.bad}><i class="far fa-angry"></i> {videoDetails.statistics.dislikeCount}</li>
+                </ul>
+            </div>
             <h1 className={styles.title}>{snippet.title}</h1>
             <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
             <pre className={styles.description}> {snippet.description} </pre>
