@@ -26,9 +26,19 @@ function App({youtube}) {
   const selectVideo = video =>{
     setSelectedVideo(video);
     youtube
-    .videoDetails(video.id) // 배열 벗기기
-    // .then(details => key(details))
+    .videoDetails(video.id)
     .then(details => setVideoDetails(details[0]))
+  }
+
+  const onClickMostVideo = video =>{
+    setSelectedVideo(video);
+    youtube
+    .videoDetails(video.id)
+    .then(details => setVideoDetails(details[0]));
+
+    youtube
+    .search(video.snippet.channelTitle) //
+    .then(videos => setSearchVideos(videos));
   }
 
   useEffect(() =>{
@@ -74,7 +84,7 @@ function App({youtube}) {
           <Route path="/">
             <div className={styles.mainPage}>
               <MainSearchForm searchWord={searchWord}/>
-              <MostVideoList videos={mostVideos}/>
+              <MostVideoList onClickMostVideo={onClickMostVideo} videos={mostVideos}/>
             </div>
           </Route>
 

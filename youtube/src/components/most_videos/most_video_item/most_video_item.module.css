@@ -8,17 +8,21 @@ li.videoList{
     width: 20%;
     float: left;
 }
-li.videoList > img.thumbnail{
+li.videoList > a{
+    text-decoration: none;
+}
+
+li.videoList > a > img.thumbnail{
     width: 100%;
     border-radius: 10px;
 }
-li.videoList > h2.title{
+li.videoList > a  > h2.title{
     font-size: 1em;
     width: 100%;
     color: #000;
     margin: 10px 0 5px;
 }
-li.videoList > span.channelTitle{
+li.videoList > a  > span.channelTitle{
     font-size: 0.9em;
     color: #808080;
 }
