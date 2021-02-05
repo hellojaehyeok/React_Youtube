@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './app.module.css';
 import MainSearchForm from './components/search_form/main_search/mainSearchForm'
 import SubSearchForm from './components/search_form/sub_search/subSearchForm'
+import MostVideoList from './components/most_videos/most_video_list/most_video_list'
 import PlayVideo from './components/play_video/play_video'
 import {
   BrowserRouter as Router,
@@ -30,10 +31,11 @@ function App({youtube}) {
     youtube
       .mostPopular() //
       .then(videos => setMostVideos(videos));
-  }, [])
+  }, [youtube])
 
   useEffect(()=>{
-    if(word == "")return;
+    setSelectedVideo(null);
+    if(word === "")return;
     youtube
       .search(word) //
       .then(videos => setSearchVideos(videos));
@@ -68,7 +70,7 @@ function App({youtube}) {
           <Route path="/">
             <div className={styles.mainPage}>
               <MainSearchForm searchWord={searchWord}/>
-              {/* <MostVideoList videos={mostVideos}/> */}
+              <MostVideoList videos={mostVideos}/>
             </div>
           </Route>
 

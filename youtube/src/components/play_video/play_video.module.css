@@ -2,4 +2,23 @@
 
 section.playVideoWrap{
     position: relative;
+    padding: 20px;
+}
+
+.video{
+
+}
+
+.title{
+    font: 20px;
+    margin-top: 40px;
+}
+
+.channelTitle{
+    font-size:16px;
+    margin: 20px 0 ;
+}
+
+.description{
+    white-space: pre-wrap;
 }
