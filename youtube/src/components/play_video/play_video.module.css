@@ -6,6 +6,7 @@ section.playVideoWrap{
 }
 
 div.detailNumber{
+    font-weight: 300;
     margin-top: 10px;
     display: flex;
     align-items: center;
@@ -21,7 +22,6 @@ ul.countWrap{
 ul.countWrap > li{
     list-style: none;
     margin: 0 15px;
-    font-size: 20px;
 }
 
 ul.countWrap > li.good{
@@ -34,15 +34,19 @@ ul.countWrap > li.bad{
 
 
 h1.title{
-    font: 20px;
+    font-size: 20px;
+    font-weight: 400;
     margin-top: 40px;
 }
 
 h2.channelTitle{
     font-size:16px;
+    font-weight: 300;
     margin: 20px 0 ;
 }
 
 pre.description{
+    font-size: 16px;
+    font-weight: 300;
     white-space: pre-wrap;
 }

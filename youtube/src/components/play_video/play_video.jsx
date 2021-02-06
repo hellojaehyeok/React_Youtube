@@ -26,7 +26,7 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails}) =>{
             </div>
             <h1 className={styles.title}>{snippet.title}</h1>
             <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
-            <pre className={styles.description}> {snippet.description} </pre>
+            <pre className={styles.description}> {videoDetails.snippet.description} </pre>
         </section>
     );
 };

@@ -30,6 +30,7 @@ li.videoList > img{
 }
 li.videoList > div > h2{
     font-size: 1em;
+    font-weight: 500;
     width: 100%;
     color: #000;
     margin: 10px 0 5px;
@@ -37,6 +38,7 @@ li.videoList > div > h2{
 }
 li.videoList > div > span{
     font-size: 0.9em;
+    font-weight: 300;
     color: #808080;
     cursor: pointer;
 }
