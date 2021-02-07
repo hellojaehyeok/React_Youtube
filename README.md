@@ -134,7 +134,7 @@ React Router를 사용하여 페이지 간 이동을 하였습니다.
 비디오 재생 화면 반응형
 
 <img src="./readmeImg/videoMedia.png" width="50%">
-<img src="./readmeImg/videoMedia.png_2" width="50%">
+<img src="./readmeImg/videoMedia_2.png" width="50%">
 
 <hr />
 
