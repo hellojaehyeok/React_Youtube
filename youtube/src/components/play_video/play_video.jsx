@@ -17,15 +17,15 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, chan
                 frameBorder="0"
                 allowFullScreen
             ></iframe>
-            <div className={styles.detailNumber}>
+            {/* <div className={styles.detailNumber}>
                 <span className={styles.views}>조회수 . {videoDetails.statistics.viewCount}</span>
                 <ul className={styles.countWrap}>
                     <li className={styles.good}><i class="far fa-smile"></i> {videoDetails.statistics.likeCount}</li>
                     <li className={styles.bad}><i class="far fa-angry"></i> {videoDetails.statistics.dislikeCount}</li>
                 </ul>
-            </div>
+            </div> */}
             <h1 className={styles.title}>{snippet.title}</h1>
-            <div className={styles.channel}>
+            {/* <div className={styles.channel}>
                 <img className={styles.thumbnail} src={channelDetails.snippet.thumbnails.medium.url} alt="채널 썸네일"/>
                 <div className={styles.channelText}>
                     <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
@@ -35,7 +35,7 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, chan
                     }
                 </div>
             </div>
-            <pre className={styles.description}> {videoDetails.snippet.description} </pre>
+            <pre className={styles.description}> {videoDetails.snippet.description} </pre> */}
         </section>
     );
 };
