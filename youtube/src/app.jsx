@@ -41,7 +41,7 @@ function App({youtube}) {
     setWord("");
     youtube
     .videoDetails(video.id) //
-    .then(details => setVideoDetails(details[0]));
+    .then(details => setVideoDetails(details));
 
     youtube
     .search(video.snippet.channelTitle) //
@@ -49,7 +49,7 @@ function App({youtube}) {
 
     youtube
     .channel(video.snippet.channelId) //
-    .then(details => setChannelDetails(details[0]));
+    .then(details => setChannelDetails(details));
   }
 
   useEffect(() =>{
