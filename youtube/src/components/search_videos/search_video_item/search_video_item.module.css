@@ -42,3 +42,11 @@ li.videoList > div > span{
     color: #808080;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 1000px){
+    li.videoList{
+        width: 50%;
+        padding: 10px 10px;
+    }
+}

@@ -22,9 +22,7 @@ div.list{
     flex:  1 1 30%;
 }
 
-
-
-
+/* MainPage */
 div.mainPage{
     width: 100vw;
     height: 100vh;
@@ -32,6 +30,12 @@ div.mainPage{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 1000px){
+    div.content{
+        flex-direction: column;
+    }
 }
 
 

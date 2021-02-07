@@ -6,3 +6,9 @@ ul.listWrap{
     flex-wrap: wrap;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 1000px){
+    ul.listWrap{
+        width: 100%;
+    }
+}

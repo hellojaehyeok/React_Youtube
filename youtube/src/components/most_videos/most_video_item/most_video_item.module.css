@@ -6,7 +6,6 @@ li.videoList{
     margin: 0 10px;
     cursor: pointer;
     width: 20%;
-    float: left;
 }
 li.videoList > a{
     text-decoration: none;
@@ -25,4 +24,12 @@ li.videoList > a  > h2.title{
 li.videoList > a  > span.channelTitle{
     font-size: 0.9em;
     color: #808080;
+}
+
+
+@media screen and (max-width: 1000px){
+    li.videoList{
+        width: 100%;
+        margin-bottom: 30px;
+    }
 }

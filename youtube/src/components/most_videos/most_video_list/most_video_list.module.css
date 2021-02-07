@@ -8,6 +8,13 @@ div.listWrap{
 ul.listContainer{
     display: flex;
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
+}
+
+@media screen and (max-width: 1000px){
+    ul.listContainer{
+        flex-direction: column;
+    }
 }
