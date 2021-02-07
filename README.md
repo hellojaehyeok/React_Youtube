@@ -115,9 +115,26 @@ React Router를 사용하여 페이지 간 이동을 하였습니다.
 
 <img src="./readmeImg/main.jpg" width="100%">
 
+메인페이지 반응형
+
+<img src="./readmeImg/mainMedia.png" width="100%">
+
 검색페이지      
 
 <img src="./readmeImg/search.jpg" width="100%">
+
+검색페이지 반응형
+
+<img src="./readmeImg/searchMedia.png" width="100%">
+
+비디오 재생 화면
+
+<img src="./readmeImg/video.png" width="100%">
+
+비디오 재생 화면 반응형
+
+<img src="./readmeImg/videoMedia.png" width="50%">
+<img src="./readmeImg/videoMedia.png_2" width="50%">
 
 <hr />
 
