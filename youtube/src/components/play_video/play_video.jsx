@@ -2,9 +2,8 @@ import React from 'react';
 import styles from './play_video.module.css'
 import '@fortawesome/fontawesome-free/js/all.js';
 
-const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails}) =>{
+const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, channelDetails}) =>{
 
-    console.log(videoDetails);
 
     return(
         <section className={styles.playVideoWrap}>
@@ -25,7 +24,16 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails}) =>{
                 </ul>
             </div>
             <h1 className={styles.title}>{snippet.title}</h1>
-            <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
+            <div className={styles.channel}>
+                <img className={styles.thumbnail} src={channelDetails.snippet.thumbnails.medium.url} alt="채널 썸네일"/>
+                <div className={styles.channelText}>
+                    <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
+                    {
+                        channelDetails.statistics.subscriberCount && 
+                        <span>구독자 {channelDetails.statistics.subscriberCount}</span>
+                    }
+                </div>
+            </div>
             <pre className={styles.description}> {videoDetails.snippet.description} </pre>
         </section>
     );

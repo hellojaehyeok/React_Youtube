@@ -17,7 +17,8 @@ function App({youtube}) {
   const [word, setWord] = useState("");
   const [searchVideos, setSearchVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [videoDetails, setVideoDetails] = useState([])
+  const [videoDetails, setVideoDetails] = useState([]);
+  const [channelDetails, setChannelDetails] = useState([]);
 
   const searchWord = word =>{
     setWord(word);
@@ -25,20 +26,30 @@ function App({youtube}) {
 
   const selectVideo = video =>{
     setSelectedVideo(video);
+
     youtube
-    .videoDetails(video.id)
-    .then(details => setVideoDetails(details[0]))
+    .videoDetails(video.id) //
+    .then(details => setVideoDetails(details[0]));
+
+    youtube
+    .channel(video.snippet.channelId) //
+    .then(details => setChannelDetails(details[0]));
   }
 
   const onClickMostVideo = video =>{
     setSelectedVideo(video);
+    setWord("");
     youtube
-    .videoDetails(video.id)
+    .videoDetails(video.id) //
     .then(details => setVideoDetails(details[0]));
 
     youtube
     .search(video.snippet.channelTitle) //
     .then(videos => setSearchVideos(videos));
+
+    youtube
+    .channel(video.snippet.channelId) //
+    .then(details => setChannelDetails(details[0]));
   }
 
   useEffect(() =>{
@@ -69,7 +80,7 @@ function App({youtube}) {
 
               <div className={styles.content}>
                 {selectedVideo &&<div className={styles.playVideo}>
-                   <PlayVideo selectedVideo={selectedVideo} videoDetails={videoDetails}/>
+                   <PlayVideo selectedVideo={selectedVideo} videoDetails={videoDetails} channelDetails={channelDetails}/>
                 </div>}
                 
                 <div className={styles.list}>
