@@ -20,12 +20,47 @@ PostCSS를 사용한 이유는 크로스 브라우징이 용이하고
 <hr />
 
 
-### 네트워크 통신 코드
+### 네트워크 통신 코드 - axios
+fetch를 사용하게 되면 반복되는 url이 반복되고 예전 브라우저에서는 호환이 안될 때가 있습니다.        
+또한 일일이 json 파일로 변환해 줘야 합니다. 하지만 axios 를 사용하면 이러한 것들을         
+편리하게 해결해 주기 때문에 사용을 합니다. 또한 긴 url로 가독성이 떨어졌던 fetch 에 비하여
+params로 나누기 때문에 가독성이 좋습니다.
+ 
+공통적으로 쓰이는 url과 params를 상위에 쓰고 아래 코드와 같이     
+사용하고자 하는 코드들을 더 추가하여 작성합니다.  
+
+
+youtube.js
+
+    constructor(key){
+        this.youtube = axios.create({
+            baseURL: "https://youtube.googleapis.com/youtube/v3",
+            params: {key: key},
+        });
+    }
+
+    async mostPopular(){
+        const response = await this.youtube.get('videos', {
+            params: {
+                part: 'snippet',
+                chart: 'mostPopular',
+                maxResults: 5,
+            }
+        })
+        return response.data.items;
+    }
+
+
+
+<hr />
+
+
+### 네트워크 통신 코드 - fetch
 
 네트워크 통신에 사용하는 코드들을 분리하여 새로운 class로 만들었습니다.          
 먼저 constructor로 키값을 받아오고 중복돼서 사용되는 getRequestOptions를 만들었습니다.         
 
-youtube.js
+youtube_fetch.js
 
     constructor(key){
         this.key=key;
@@ -40,7 +75,7 @@ url 주소에서 받아온 데이터를 json 파일로 변환하고 items들을 
 (검색하였을 때 id 값이 두 개가 있는 것을 확인하였고 하나만 사용하기 위하여 map을 사용하였습니다.)         
 Postman을 이용하여 api들을 관리하고 저장하였습니다.        
 
-youtube.js
+youtube_fetch.js
 
     async mostPopular(){
         const response = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=5&key=" + this.key, this.getRequestOptions);
