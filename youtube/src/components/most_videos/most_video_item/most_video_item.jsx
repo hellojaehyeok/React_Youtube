@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './most_video_item.module.css'
 import {
-    BrowserRouter as Router,
     NavLink
   } from 'react-router-dom'
 

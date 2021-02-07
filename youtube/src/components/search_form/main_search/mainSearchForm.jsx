@@ -1,11 +1,8 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import styles from './mainSearchForm.module.css'
 import youtubeLogo from '../../../youtube_logo.png';
 import '@fortawesome/fontawesome-free/js/all.js';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     NavLink
   } from 'react-router-dom'
 

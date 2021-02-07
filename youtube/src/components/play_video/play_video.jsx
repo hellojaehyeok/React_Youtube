@@ -8,6 +8,7 @@ const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, chan
     return(
         <section className={styles.playVideoWrap}>
             <iframe
+                title="youtube video player"
                 className={styles.video}
                 type="text/html"
                 width="100%" 

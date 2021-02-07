@@ -64,7 +64,7 @@ function App({youtube}) {
     youtube
       .search(word) //
       .then(videos => setSearchVideos(videos));
-  },[word])
+  },[word, youtube])
 
 
 

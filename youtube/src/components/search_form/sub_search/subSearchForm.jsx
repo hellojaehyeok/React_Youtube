@@ -2,9 +2,6 @@ import React, {useEffect, useState} from 'react';
 import youtubeLogo from '../../../youtube_logo.png';
 import styles from './subSearchForm.module.css'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     NavLink
   } from 'react-router-dom'
 
@@ -19,8 +16,7 @@ const SubSearchForm = (props) => {
 
     useEffect(()=>{
         setSearchValue(props.searchWord);
-
-    },[])
+    },[props.searchWord])
 
     return(
         <header className={styles.header}>
