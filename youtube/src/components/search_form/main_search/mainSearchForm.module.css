@@ -36,6 +36,7 @@ form > button.searchButton{
     color: #454545;
     opacity: 0.5;
     transition: 500ms;
+    outline: none;
 }
 form > button.searchButton:hover{
     opacity: 1;

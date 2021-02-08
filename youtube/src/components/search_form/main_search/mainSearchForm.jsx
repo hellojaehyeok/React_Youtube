@@ -13,6 +13,7 @@ const MainSearchForm = (props) => {
 
     const onSubmit = e =>{
         e.preventDefault();
+        if(searchValue == "") return;
         props.searchWord(searchValue);
         document.querySelector('#searchLink').click();
     }

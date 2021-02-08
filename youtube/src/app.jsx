@@ -93,6 +93,11 @@ function App({youtube}) {
                 </div>
               </div>
 
+
+              <div className={styles.madeBy}>
+                Made by Song jae hyeok<br />
+                <a href="https://github.com/hellojaehyeok" target="_blank" alt="송재혁 깃허브 페이지">Github Link</a>
+              </div>
             </div>
           </Route>
 
@@ -101,6 +106,11 @@ function App({youtube}) {
             <div className={styles.mainPage}>
               <MainSearchForm searchWord={searchWord}/>
               <MostVideoList onClickMostVideo={onClickMostVideo} videos={mostVideos}/>
+            </div>
+
+            <div className={styles.madeBy}>
+              Made by Song jae hyeok<br />
+              <a href="https://github.com/hellojaehyeok" target="_blank" alt="송재혁 깃허브 페이지">Github Link</a>
             </div>
           </Route>
 

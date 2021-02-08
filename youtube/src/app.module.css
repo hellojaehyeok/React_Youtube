@@ -39,3 +39,24 @@ div.mainPage{
 }
 
 
+/* Made By SJH */
+div.madeBy{
+    text-align: center;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    line-height: 30px;
+
+}
+
+div.madeBy > a{
+    color: #aeaeae;
+    transition: 500ms;
+}
+
+div.madeBy > a:hover{
+    color: #000;
+}
+
