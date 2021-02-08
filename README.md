@@ -133,15 +133,15 @@ React Router를 사용하여 페이지 간 이동을 하였습니다.
 
 비디오 재생 화면 반응형
 
-<img src="./readmeImg/videoMedia.png" width="50%">
-<img src="./readmeImg/videoMedia_2.png" width="50%">
+<img src="./readmeImg/videoMedia.png" width="40%">
+<img src="./readmeImg/videoMedia_2.png" width="40%">
 
 <hr />
 
 
 
 ### Main Page - Form
-화면 중앙에는 유튜브 로고 검색창을 두었고 아래에는     
+화면 중앙에는 유튜브 로고와 검색창을 두었고 아래에는     
 유튜브에서 가장 인기 있는 영상 5개를 가져와 보여주었습니다.      
 
 검색 값을 받아오기 위하여 searchValue를 만들었고        
@@ -150,18 +150,22 @@ onChange에 setSearchValue를 넣어 타이핑 시 값이 계속 바뀌도록 �
 onSubmit 시에는 form의 특성상 새로 고침되는 것을 방지하기 위하여      
 e.preventDefault(); 를 사용하였습니다.         
 props.searchWord(searchValue);를 사용하여 사용자가 입력한 값을      
-부모 요소로 전달하였습니다.      
+부모 요소로 전달하였습니다. 또한 router를 이용하기 위해 useHistory를
+사용하였습니다.
+
 
 
 
 mainSearchForm.jsx
 
+    const history = useHistory();  
     const [searchValue, setSearchValue] = useState("");
 
     const onSubmit = e =>{
         e.preventDefault();
+        if(searchValue == "") return;
         props.searchWord(searchValue);
-        document.querySelector('#searchLink').click();
+        history.push("/searchPage");
     }
 
     return(
@@ -176,7 +180,6 @@ mainSearchForm.jsx
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
                 <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
-                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">Link</NavLink>
             </form>
         </section>
     );
@@ -338,7 +341,57 @@ search_video_item.jsx
     )
 
 
+### Play Video
+
+리스트 클릭시 비디오와 정보들이 나오도록 제작하였습니다.
+youtube api 에서 가져온 json 파일을 가져와 원하는 정보를 수집하였습니다.
+
+
+    const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, channelDetails}) =>{
+        return(
+            <section className={styles.playVideoWrap}>
+                <iframe
+                    title="youtube video player"
+                    className={styles.video}
+                    type="text/html"
+                    width="100%" 
+                    height="500px"
+                    src={"https://www.youtube.com/embed/" + selectedVideo.id}
+                    frameBorder="0"
+                    allowFullScreen
+                ></iframe>
+
+                <div className={styles.detailNumber}>
+                    <span className={styles.views}>조회수 . {videoDetails.statistics.viewCount}</span>
+                    <ul className={styles.countWrap}>
+                        <li className={styles.good}><i class="far fa-smile"></i> {videoDetails.statistics.likeCount}</li>
+                        <li className={styles.bad}><i class="far fa-angry"></i> {videoDetails.statistics.dislikeCount}</li>
+                    </ul>
+                </div>
+
+                <h1 className={styles.title}>{snippet.title}</h1>
+
+                <div className={styles.channel}>
+                    <img className={styles.thumbnail} src={channelDetails.snippet.thumbnails.medium.url} alt="채널 썸네일"/>
+                    <div className={styles.channelText}>
+                        <h2 className={styles.channelTitle}>{snippet.channelTitle}</h2>
+                        {
+                            channelDetails.statistics.subscriberCount && 
+                            <span>구독자 {channelDetails.statistics.subscriberCount}</span>
+                        }
+                    </div>
+                </div>
+
+                <pre className={styles.description}> {videoDetails.snippet.description} </pre>
+            </section>
+        );
+    };
+
+
+
+
 <hr />
+
 
 송재혁입니다.      
 감사합니다.
