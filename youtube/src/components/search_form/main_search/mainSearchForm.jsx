@@ -3,11 +3,11 @@ import styles from './mainSearchForm.module.css'
 import youtubeLogo from '../../../youtube_logo.png';
 import '@fortawesome/fontawesome-free/js/all.js';
 import {
-    NavLink
+    useHistory
   } from 'react-router-dom'
 
 const MainSearchForm = (props) => {
-            
+    const history = useHistory();        
     const [searchValue, setSearchValue] = useState("");
 
 
@@ -15,7 +15,7 @@ const MainSearchForm = (props) => {
         e.preventDefault();
         if(searchValue == "") return;
         props.searchWord(searchValue);
-        document.querySelector('#searchLink').click();
+        history.push("/searchPage");
     }
 
 
@@ -31,7 +31,6 @@ const MainSearchForm = (props) => {
                 onChange = {e =>setSearchValue(e.target.value)}
                 />
                 <button type="submit" className={styles.searchButton}><i className="fas fa-search"></i></button>
-                <NavLink id="searchLink" className={styles.searchLink} to="/searchPage">Link</NavLink>
             </form>
         </section>
     );

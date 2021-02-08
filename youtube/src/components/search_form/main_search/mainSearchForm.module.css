@@ -41,9 +41,3 @@ form > button.searchButton{
 form > button.searchButton:hover{
     opacity: 1;
 }
-a.searchLink{
-    opacity: 0;
-    display: none;
-    font-size: 0;
-    pointer-events: none;
-}
