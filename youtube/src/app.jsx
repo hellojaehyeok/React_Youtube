@@ -19,13 +19,14 @@ function App({youtube}) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videoDetails, setVideoDetails] = useState([]);
   const [channelDetails, setChannelDetails] = useState([]);
+  const [isChange, setIsChange] = useState([]);
 
   const searchWord = word =>{
     setWord(word);
   }
 
   const selectVideo = video =>{
-    setSelectedVideo(video);
+    setIsChange(video);
 
     youtube
     .videoDetails(video.id) //
@@ -37,11 +38,11 @@ function App({youtube}) {
   }
 
   const onClickMostVideo = video =>{
-    setSelectedVideo(video);
+    setIsChange(video);
     setWord("");
     youtube
     .videoDetails(video.id) //
-    .then(details => setVideoDetails(details));
+    .then(details => setVideoDetails(details[0]));
 
     youtube
     .search(video.snippet.channelTitle) //
@@ -49,8 +50,12 @@ function App({youtube}) {
 
     youtube
     .channel(video.snippet.channelId) //
-    .then(details => setChannelDetails(details));
+    .then(details => setChannelDetails(details[0]));
   }
+
+  useEffect(()=>{
+    setSelectedVideo(isChange);
+  }, [videoDetails])
 
   useEffect(() =>{
     youtube
