@@ -107,6 +107,23 @@ index.js
 
 
 
+<hr />
+
+
+### 웹 서버 - Netlify
+github에서는 현재 Ract Router History가 지원되지 않기 때문에        
+Netlify로 배포를 하였습니다.         
+  
+npm build 후 아래의 코드를 입력하면 배포가 가능합니다.          
+
+    netlify deploy
+
+
+
+
+<hr />
+
+
 ## 웹사이트 구성
 메인 페이지와 검색 결과 페이지 두 개를 제작하였습니다.          
 React Router를 사용하여 페이지 간 이동을 하였습니다.        
@@ -343,8 +360,8 @@ search_video_item.jsx
 
 ### Play Video
 
-리스트 클릭시 비디오와 정보들이 나오도록 제작하였습니다.
-youtube api 에서 가져온 json 파일을 가져와 원하는 정보를 수집하였습니다.
+리스트 클릭 시 비디오와 정보들이 나오도록 제작하였습니다.        
+youtube api 에서 가져온 json 파일을 가져와 원하는 정보를 수집하였습니다.        
 
 
     const PlayVideo = ({selectedVideo, selectedVideo : {snippet}, videoDetails, channelDetails}) =>{
